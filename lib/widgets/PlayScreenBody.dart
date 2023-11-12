@@ -13,54 +13,63 @@ class PlayScreenBody extends StatelessWidget {
   final void Function(bool) onYesNoTap;
 
   const PlayScreenBody({
-    @required this.level,
-    @required this.isGameOver,
-    @required this.score,
-    @required this.questionText,
-    @required this.onRetryTap,
-    @required this.onYesNoTap,
+    super.key,
+    required this.level,
+    required this.isGameOver,
+    required this.score,
+    required this.questionText,
+    required this.onRetryTap,
+    required this.onYesNoTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        PlayScreenTopBar(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        titleSpacing: 0,
+        title: PlayScreenTopBar(
           level: level,
         ),
-        PlayScreenScore(
-          score: score,
-          isGameOver: isGameOver,
-        ),
-        Expanded(
-          flex: 2,
-          child: Center(
-            child: Text(
-              isGameOver ? 'Game Over ' : questionText ?? '0',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 40,
-                color: const Color(0xffffffff),
-                letterSpacing: 0.08,
-                fontWeight: FontWeight.w500,
+      ),
+      body: Column(
+        children: [
+          PlayScreenScore(
+            score: score,
+            isGameOver: isGameOver,
+          ),
+          Expanded(
+            flex: 2,
+            child: Center(
+              child: Text(
+                isGameOver ? 'Game Over ' : questionText,
+                style: const TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 40,
+                  color: Color(0xffffffff),
+                  letterSpacing: 0.08,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.left,
               ),
-              textAlign: TextAlign.left,
             ),
           ),
-        ),
-        Expanded(
-          child: isGameOver
-              ? RetryButton(
-                  onTap: onRetryTap,
-                )
-              : YesNoButton(
-                  onTap: onYesNoTap,
-                ),
-        ),
-        Expanded(
-          child: Text(''),
-        ),
-      ],
+          Expanded(
+            child: isGameOver
+                ? RetryButton(
+                    onTap: onRetryTap,
+                  )
+                : YesNoButton(
+                    onTap: onYesNoTap,
+                  ),
+          ),
+          const Expanded(
+            child: Text(''),
+          ),
+        ],
+      ),
     );
   }
 }

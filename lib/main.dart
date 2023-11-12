@@ -26,14 +26,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   final Level level;
 
-  const MyApp({this.level});
+  const MyApp({super.key, required this.level});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Level>(
       create: (context) => level,
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'MatZ',
         home: Home(),

@@ -5,12 +5,12 @@ class Level extends ChangeNotifier {
   Map<String, int> highestScores;
   String lastPlayedLevel;
 
-  Level({this.highestScores, this.lastPlayedLevel});
+  Level({required this.highestScores, required this.lastPlayedLevel});
 
   void setHighestScoreOf(String level, int newHighScore) async {
     highestScores[level] = newHighScore;
     SharedPreferences savedData = await SharedPreferences.getInstance();
-    savedData.setInt('highestScoreOf$level', highestScores[level]);
+    savedData.setInt('highestScoreOf$level', highestScores[level] ?? 0);
     notifyListeners();
   }
 

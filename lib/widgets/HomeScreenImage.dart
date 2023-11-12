@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class HomeScreenImage extends StatelessWidget {
   final String level;
-  HomeScreenImage({@required this.level});
+  const HomeScreenImage({super.key, required this.level});
 
   static const message = [
     'Hardest Game Ever Created',
@@ -16,9 +16,9 @@ class HomeScreenImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage('assets/images/1.png'), context);
-    precacheImage(AssetImage('assets/images/2.png'), context);
-    precacheImage(AssetImage('assets/images/3.png'), context);
+    precacheImage(const AssetImage('assets/images/1.png'), context);
+    precacheImage(const AssetImage('assets/images/2.png'), context);
+    precacheImage(const AssetImage('assets/images/3.png'), context);
 
     return Stack(
       alignment: Alignment.bottomCenter,
@@ -30,13 +30,13 @@ class HomeScreenImage extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage('assets/images/$level.png'),
               fit: BoxFit.cover,
-              colorFilter: new ColorFilter.mode(
+              colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.5), BlendMode.dstIn),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 5),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 5),
           child: Text(
             'MatZ',
             style: TextStyle(
@@ -50,10 +50,10 @@ class HomeScreenImage extends StatelessWidget {
         ),
         Text(
           message[Random().nextInt(message.length)],
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'Poppins',
             fontSize: 18,
-            color: const Color(0xffffffff),
+            color: Color(0xffffffff),
             letterSpacing: 0.036000000000000004,
             fontWeight: FontWeight.w300,
           ),

@@ -7,7 +7,7 @@ import '../data/Level.dart';
 class PlayScreenTopBar extends StatelessWidget {
   final String level;
 
-  const PlayScreenTopBar({@required this.level});
+  const PlayScreenTopBar({super.key, required this.level});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class PlayScreenTopBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(

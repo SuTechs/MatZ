@@ -7,13 +7,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:matz/data/Level.dart';
 import 'package:matz/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+
+    Level level = Level(highestScores: {'1': 0}, lastPlayedLevel: '1');
+
+    await tester.pumpWidget(MyApp(level: level));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

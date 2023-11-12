@@ -1,10 +1,11 @@
 import 'dart:math';
+
 import 'package:math_expressions/math_expressions.dart';
 
 _Q _getQ(String level) {
   ContextModel cm = ContextModel();
   bool answer;
-  String qText;
+  late String qText;
 
   switch (level) {
     case '1':
@@ -39,10 +40,11 @@ _Q _getQ(String level) {
 
   int randomAnswer = _getRandomNumber(sum - 1, sum + 2);
 
-  if (randomAnswer == sum)
+  if (randomAnswer == sum) {
     answer = true;
-  else
+  } else {
     answer = false;
+  }
 
   qText += ' = $randomAnswer';
 
@@ -50,6 +52,7 @@ _Q _getQ(String level) {
 }
 
 int _getRandomNumber(int min, int max) => Random().nextInt(max - min) + min;
+
 String _getRandomOperator(List<String> operators) =>
     operators[Random().nextInt(operators.length)];
 
@@ -57,24 +60,24 @@ class _Q {
   final String qText;
   final bool qAns;
 
-  _Q({this.qText, this.qAns});
+  _Q({required this.qText, required this.qAns});
 }
 
 class Brain {
-  String _level;
-  _Q _question;
-  int _plusPoint;
-  int _minusPoint;
+  late String _level;
+  late _Q _question;
+  late int _plusPoint;
+  late int _minusPoint;
 
   initializeBrain(String level) {
-    final Map<String, Map<String, int>> _scoreRule = {
+    final Map<String, Map<String, int>> scoreRule = {
       '1': {'plus': 1, 'minus': -5},
       '2': {'plus': 3, 'minus': -50},
       '3': {'plus': 10, 'minus': -999},
     };
 
-    _plusPoint = _scoreRule[level]['plus'];
-    _minusPoint = _scoreRule[level]['minus'];
+    _plusPoint = scoreRule[level]!['plus']!;
+    _minusPoint = scoreRule[level]!['minus']!;
     _level = level;
 
     _question = _getQ(_level);

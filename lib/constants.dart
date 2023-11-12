@@ -21,7 +21,7 @@ const kHighestScoreStyle = TextStyle(
 const kPlayNowButtonTextStyle = TextStyle(
   fontFamily: 'Poppins',
   fontSize: 30,
-  color: const Color(0xffffffff),
+  color: Color(0xffffffff),
   letterSpacing: 0.09,
   fontWeight: FontWeight.w500,
 );
@@ -29,7 +29,7 @@ const kPlayNowButtonTextStyle = TextStyle(
 const kYesNoButtonTextStyle = TextStyle(
   fontFamily: 'Poppins',
   fontSize: 36,
-  color: const Color(0xffffffff),
+  color: Color(0xffffffff),
   letterSpacing: 0.108,
   fontWeight: FontWeight.w600,
 );
@@ -37,14 +37,14 @@ const kYesNoButtonTextStyle = TextStyle(
 const kPlayScreenScoreTextStyle = TextStyle(
   fontFamily: 'Poppins',
   fontSize: 69,
-  color: const Color(0xffa0a0a0),
+  color: Color(0xffa0a0a0),
   letterSpacing: 0.20700000000000002,
 );
 
 const kPlayScreenGameOverScoreTextStyle = TextStyle(
   fontFamily: 'Poppins',
   fontSize: 69,
-  color: const Color(0xffff0000),
+  color: Color(0xffff0000),
   letterSpacing: 0.20700000000000002,
   fontWeight: FontWeight.w600,
 );

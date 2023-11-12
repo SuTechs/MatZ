@@ -4,7 +4,7 @@ import 'package:matz/constants.dart';
 class RulesText extends StatelessWidget {
   final String level;
 
-  const RulesText({@required this.level});
+  const RulesText({super.key, required this.level});
 
   static const rulesData = {
     '1': {'plus': 1, 'minus': 5},
@@ -25,7 +25,7 @@ class RulesText extends StatelessWidget {
               children: [
                 TextSpan(
                   text:
-                      'you loose if score < 0\n+${rulesData[level]['plus']} point on correct answer\n-${rulesData[level]['minus']} points on wrong answer',
+                      'you loose if score < 0\n+${rulesData[level]?['plus']} point on correct answer\n-${rulesData[level]?['minus']} points on wrong answer',
                   style: kHighestScoreTitleStyle.copyWith(
                     fontWeight: FontWeight.w500,
                   ),

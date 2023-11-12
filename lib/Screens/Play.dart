@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:matz/constants.dart';
 import 'package:matz/data/Level.dart';
 import 'package:matz/data/question.dart';
 import 'package:matz/widgets/PlayScreenBody.dart';
-import 'package:matz/constants.dart';
 import 'package:provider/provider.dart';
 
 class Play extends StatefulWidget {
   final String level;
 
-  Play({@required this.level});
+  const Play({super.key, required this.level});
 
   @override
-  _PlayState createState() => _PlayState();
+  State<Play> createState() => _PlayState();
 }
 
 class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
@@ -31,7 +31,7 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
     setState(() {
       score = 0;
       isGameOver = false;
-      _key.currentState.restartAnimation();
+      _key.currentState?.restartAnimation();
       brain.nextQuestion();
     });
   }
@@ -41,17 +41,22 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
       score += brain.scoreReward(value);
       brain.nextQuestion();
 
-      if (score >
-          Provider.of<Level>(context, listen: false)
-              .highestScores[widget.level])
+      final highestScore = Provider.of<Level>(context, listen: false)
+              .highestScores[widget.level] ??
+          0;
+
+      if (score > highestScore) {
         Provider.of<Level>(context, listen: false)
             .setHighestScoreOf(widget.level, score);
-      else if (score < 0) isGameOver = true;
+      } else if (score < 0) {
+        isGameOver = true;
+      }
 
-      if (!isGameOver)
-        _key.currentState.restartAnimation();
-      else
-        _key.currentState.controller.stop();
+      if (!isGameOver) {
+        _key.currentState?.restartAnimation();
+      } else {
+        _key.currentState?.controller.stop();
+      }
     });
   }
 
@@ -59,27 +64,25 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kScaffoldBackgroundColor,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            PlayBackgroundAnimation(
-              key: _key,
-              onAnimationEnd: () {
-                setState(() {
-                  isGameOver = true;
-                });
-              },
-            ),
-            PlayScreenBody(
-              level: widget.level,
-              isGameOver: isGameOver,
-              score: score,
-              questionText: brain.getQuestionText(),
-              onRetryTap: onRetryTapped,
-              onYesNoTap: onYesNoButtonTapped,
-            ),
-          ],
-        ),
+      body: Stack(
+        children: [
+          PlayBackgroundAnimation(
+            key: _key,
+            onAnimationEnd: () {
+              setState(() {
+                isGameOver = true;
+              });
+            },
+          ),
+          PlayScreenBody(
+            level: widget.level,
+            isGameOver: isGameOver,
+            score: score,
+            questionText: brain.getQuestionText(),
+            onRetryTap: onRetryTapped,
+            onYesNoTap: onYesNoButtonTapped,
+          ),
+        ],
       ),
     );
   }
@@ -88,8 +91,7 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
 class PlayBackgroundAnimation extends StatefulWidget {
   final void Function() onAnimationEnd;
 
-  const PlayBackgroundAnimation({Key key, @required this.onAnimationEnd})
-      : super(key: key);
+  const PlayBackgroundAnimation({super.key, required this.onAnimationEnd});
 
   @override
   _PlayBackgroundAnimationState createState() =>
@@ -98,18 +100,20 @@ class PlayBackgroundAnimation extends StatefulWidget {
 
 class _PlayBackgroundAnimationState extends State<PlayBackgroundAnimation>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
+  late AnimationController controller;
+
   @override
   void initState() {
     super.initState();
 
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
     controller.forward();
 
     controller.addListener(() {
-      if (controller.status == AnimationStatus.completed)
+      if (controller.status == AnimationStatus.completed) {
         widget.onAnimationEnd();
+      }
       setState(() {});
     });
   }

@@ -1,22 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../data/Level.dart';
 
 import '../constants.dart';
+import '../data/Level.dart';
 
 class HomeTopScoreLevelBar extends StatefulWidget {
   final Function(String) onChangeLevel;
 
-  HomeTopScoreLevelBar({
-    @required this.onChangeLevel,
+  const HomeTopScoreLevelBar({super.key, 
+    required this.onChangeLevel,
   });
+
   @override
   _HomeTopScoreLevelBarState createState() => _HomeTopScoreLevelBarState();
 }
 
 class _HomeTopScoreLevelBarState extends State<HomeTopScoreLevelBar> {
-  String dropdownValue;
+  late String dropdownValue;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _HomeTopScoreLevelBarState extends State<HomeTopScoreLevelBar> {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -55,7 +55,9 @@ class _HomeTopScoreLevelBarState extends State<HomeTopScoreLevelBar> {
                   value: dropdownValue,
                   style: kHighestScoreStyle,
                   isDense: true,
-                  onChanged: (String newValue) {
+                  onChanged: (String? newValue) {
+                    if (newValue == null) return;
+
                     setState(() {
                       dropdownValue = newValue;
                     });

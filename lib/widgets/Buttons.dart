@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:matz/constants.dart';
 
 class _CustomButton extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
   final double width;
   final double height;
   final Color color;
   final String buttonText;
   final TextStyle buttonTextStyle;
 
-  _CustomButton(
-      {@required this.onTap,
-      this.width,
-      this.height,
-      this.color,
-      @required this.buttonText,
-      this.buttonTextStyle});
+  const _CustomButton({
+    required this.onTap,
+    required this.width,
+    required this.height,
+    required this.color,
+    required this.buttonText,
+    required this.buttonTextStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _CustomButton extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30.0),
             color: color,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.white,
                 blurRadius: 2.0,
@@ -46,9 +47,10 @@ class _CustomButton extends StatelessWidget {
 }
 
 class PlayNowButton extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
 
-  const PlayNowButton({Key key, @required this.onTap}) : super(key: key);
+  const PlayNowButton({super.key, required this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return _CustomButton(
@@ -63,9 +65,10 @@ class PlayNowButton extends StatelessWidget {
 }
 
 class RetryButton extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
 
-  const RetryButton({Key key, @required this.onTap}) : super(key: key);
+  const RetryButton({super.key, required this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -84,7 +87,7 @@ class RetryButton extends StatelessWidget {
 class YesNoButton extends StatelessWidget {
   final void Function(bool) onTap;
 
-  const YesNoButton({@required this.onTap});
+  const YesNoButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +122,7 @@ class YesNoButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         buttons[0],
-        SizedBox(
+        const SizedBox(
           width: 25,
         ),
         buttons[1],
