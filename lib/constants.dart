@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 const kGreyWhiteColor = Color(0xffa0a0a0);
 const kGreenColor = Color(0xff00b07e);
-const kScaffoldBackgroundColor = Color(0xff121212);
+// const kScaffoldBackgroundColor = Color(0xff121212);
+const kScaffoldBackgroundColor = Colors.black;
 
 const kHighestScoreTitleStyle = TextStyle(
   fontFamily: 'Poppins',
