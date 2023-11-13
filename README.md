@@ -2,11 +2,12 @@
 
 Welcome to **MatZ Mania: Hardest Game Ever**, the ultimate test of your mathematical prowess wrapped in a simple yet fiendishly difficult game. Do you have what it takes to conquer the world of numbers?
 
-<img src="https://github.com/SuTechs/MatZ/blob/master/Download%20App/preview-MatZ.gif" width="300">
+<img src="https://raw.githubusercontent.com/SuTechs/MatZ/44e30bba8ba687c52c702ba89cd0eed81c697fbe/Download%20App/preview-MatZ.gif" width="300">
 
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
+- [Technology](#technology)
 - [Play Online](#play-online)
 - [Download the App](#download-the-app)
 - [How to Play](#how-to-play)
@@ -22,6 +23,10 @@ MatZ Mania is not just a game; it's a brain exercise, a test of your mental agil
 - **Progressive Levels:** From easy to hard, suitable for all ages.
 - **Time-Bound Challenges:** Quick rounds that test your speed and accuracy.
 - **Score Tracking:** Keep track of your progress and challenge yourself.
+
+## Technology
+- **Built with Flutter:** This app is developed using Flutter, ensuring a seamless and responsive user experience across all devices.
+- **State Management:** For efficient state management, we use the Provider package, enabling a more scalable and maintainable codebase.
 
 ## Play Online
 Experience MatZ Mania right from your browser. Click here to play online:
@@ -49,4 +54,3 @@ For support, feedback, or suggestions, please contact us at matz@sutechs.in.
 ---
 
 **Enjoy playing MatZ Mania, the hardest yet most thrilling math game ever!**
-
