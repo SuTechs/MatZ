@@ -16,6 +16,7 @@ dependencies:
   provider: ^6.1.1
   shared_preferences: ^2.2.2
   math_expressions: ^2.4.0
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +34,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/lotties/
 
   fonts:
     - family: Poppins

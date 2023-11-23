@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:matz/constants.dart';
 import 'package:matz/data/Level.dart';
 import 'package:matz/data/question.dart';
@@ -66,6 +67,10 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
       backgroundColor: kScaffoldBackgroundColor,
       body: Stack(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 16*2),
+            child: Lottie.asset('assets/lotties/bubbles.json', repeat: true,),
+          ),
           PlayBackgroundAnimation(
             key: _key,
             onAnimationEnd: () {

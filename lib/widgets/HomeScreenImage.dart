@@ -31,7 +31,7 @@ class HomeScreenImage extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       children: [
         Container(
-          width: 234.0,
+          width: 250.0,
           height: 300.0,
           margin: const EdgeInsets.only(bottom: 16),
           decoration: BoxDecoration(
@@ -39,7 +39,7 @@ class HomeScreenImage extends StatelessWidget {
               image: AssetImage('assets/images/$level.png'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.5), BlendMode.dstIn),
+                  Colors.black.withOpacity(0.7), BlendMode.dstIn),
             ),
           ),
         ),

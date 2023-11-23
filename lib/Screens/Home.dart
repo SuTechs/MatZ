@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 import 'package:matz/constants.dart';
 import 'package:matz/data/Level.dart';
 import 'package:matz/widgets/Buttons.dart';
@@ -42,18 +43,20 @@ class _HomeState extends State<Home> {
           },
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: Center(
-              child: HomeScreenImage(
+          Padding(
+            padding: const EdgeInsets.only(top: 16*2),
+            child: Lottie.asset('assets/lotties/elements.json', repeat: true,reverse: true),
+          ),
+          Column(
+            children: [
+              const SizedBox(height: 64,),
+              HomeScreenImage(
                 level: currentLevel,
               ),
-            ),
-          ),
-          Expanded(
-            child: Center(
-              child: PlayNowButton(
+              const SizedBox(height: 72,),
+              PlayNowButton(
                 onTap: () {
                   Provider.of<Level>(context, listen: false)
                       .setLastPlayedLevel(currentLevel);
@@ -67,14 +70,13 @@ class _HomeState extends State<Home> {
                   );
                 },
               ),
-            ),
-          ),
-          Expanded(
-            child: Center(
-              child: RulesText(
+              const Spacer(),
+              RulesText(
                 level: currentLevel,
               ),
-            ),
+              const SizedBox(height: 16),
+
+            ],
           ),
         ],
       ),
