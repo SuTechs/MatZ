@@ -15,31 +15,31 @@ class RulesText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white10,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
-
           children: [
-            RichText(
-
-              text: TextSpan(
-                text: 'Rules\n',
-                style:
-                    kHighestScoreStyle.copyWith(fontSize: 22, letterSpacing: 1),
-                children: [
-                  TextSpan(
-                    text:
-                        'you loose if score < 0\n+${rulesData[level]?['plus']} point on correct answer\n-${rulesData[level]?['minus']} points on wrong answer',
-                    style: kHighestScoreTitleStyle.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  )
-                ],
+            Flexible(
+              child: RichText(
+                text: TextSpan(
+                  text: 'Rules\n',
+                  style: kHighestScoreStyle.copyWith(
+                      fontSize: 22, letterSpacing: 1),
+                  children: [
+                    TextSpan(
+                      text:
+                          'you loose if score < 0\n+${rulesData[level]?['plus']} point on correct answer\n-${rulesData[level]?['minus']} points on wrong answer',
+                      style: kHighestScoreTitleStyle.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],

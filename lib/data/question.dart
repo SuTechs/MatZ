@@ -88,7 +88,7 @@ class Brain {
     return _minusPoint;
   }
 
-  String getQuestionText() => _question.qText;
+  String getQuestionText() => _question.qText.replaceAll('*', 'x');
 
   void nextQuestion() {
     _question = _getQ(_level);
